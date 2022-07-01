@@ -16,10 +16,7 @@
    				$rows[]=$r;
   			}
 			echo json_encode($rows, JSON_UNESCAPED_UNICODE);
-		} else {
-			$msg = array('msg'=>"NO DATA");
-			echo json_encode($msg, JSON_UNESCAPED_UNICODE);
-			}
+		} 
 
 		$result->close();
 		$con->close();

@@ -11,7 +11,8 @@
 				FROM
   					parametros 
 				WHERE  Id ='LAMDPOSLT_FEL_TOKEN'
-				OR Id LIKE 'LAMDPOSLT_".$idsucur."_%' OR Id= 'LAMDPOSLT_FORMADEPAGO' OR Id='LAMDPOSLT_PROPINA_SUGERIDA'
+				OR Id LIKE 'LAMDPOSLT_".$idsucur."_%' OR Id LIKE 'LAMDPOSLT_".$idsucur."_".$idcaja."_%' 
+				OR Id= 'LAMDPOSLT_FORMADEPAGO' OR Id='LAMDPOSLT_PROPINA_SUGERIDA'
 					OR Id='LAMDPOSLT_COMANDA_NOMBRE'";
 		$result = $con->query($query);
 		
