@@ -6,7 +6,8 @@
 		$query = "SELECT 
   					Id,
   					CodigoPago,
-  					Nombre
+  					Nombre,
+					TipoPago
 				FROM
   					formasdepago 
 				WHERE CodigoPago IN $codpago";

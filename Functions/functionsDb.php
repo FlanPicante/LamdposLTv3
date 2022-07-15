@@ -1,4 +1,9 @@
 <?php
+function getVersion()
+{
+  return 3;
+}
+
 function getid($table, $condicion, $conlocal)
 {
   $queryId = "SELECT 
@@ -275,22 +280,37 @@ function updateTotalOrden($idOrden, $conlocal)
   $queryM = "UPDATE pedidostemporal SET Total=($subQuery) WHERE Id=$idOrden";
   $conlocal->query($queryM);
 }
-function updateCliente($json,$conlocal){
-  $query="UPDATE clientes SET
+function updateCliente($json, $conlocal)
+{
+  $query = "UPDATE clientes SET
       Nit='$json->Nit', Telefono='$json->Celular',
       Nombre='$json->Nombre'
       WHERE Id=$json->Id";
-  if(!$conlocal->query($query)){
+  if (!$conlocal->query($query)) {
     //MANEJO ERRORES
     echo $conlocal->error;
   }
 }
-function updateDireccionCl($json,$conlocal){
-  $query="UPDATE direccionesdomicilio SET
+function updateDireccionCl($json, $conlocal)
+{
+  $query = "UPDATE direccionesdomicilio SET
       Direccion='$json->Direccion', Indicaciones='$json->Indicaciones'
       WHERE Id=$json->Id AND IdClientes=$json->IdCliente";
-  if(!$conlocal->query($query)){
+  if (!$conlocal->query($query)) {
     //MANEJO ERRORES
     echo $conlocal->error;
+  }
+}
+function validarTable($conlocal, $table)
+{
+  $query = "DESCRIBE $table";
+  $result = $conlocal->query($query);
+  if ($result->num_rows > 0) {
+    // VER CON QUE RECIBIR DATA
+    $row = "";
+    while ($r = $result->fetch_assoc()) {
+      $row .= $r["Field"] . ",";
+    }
+    return $row;
   }
 }

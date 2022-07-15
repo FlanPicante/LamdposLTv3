@@ -41,11 +41,12 @@ switch ($funcion) {
   case 'updateDireccionCl':
     updateDireccionCl($json, $con);
     break;
-  case 'prueba':
-    if (obParamTmp($con, 1) == 1) {
-      echo "holas";
-    } else {
-      echo "si";
-    }
+  case 'validarTable':
+    echo validarTable($con, $json->Table);
     break;
+  case 'versionWS':
+    echo getVersion();
+    break;
+  case 'prueba':
+    echo validarTable($con, "log_errors");
 }
