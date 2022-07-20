@@ -1,7 +1,7 @@
 <?php
 function getVersion()
 {
-  return 3;
+  return 4;
 }
 
 function getid($table, $condicion, $conlocal)
@@ -257,12 +257,12 @@ function obDatosContingencia($idCaja, $conlocal)
     echo json_encode($msg, JSON_UNESCAPED_UNICODE);
   }
 }
-function obParamTmp($conlocal, $IdSucursal)
+function obParamTmp($conlocal, $IdCaja)
 {
   $queryM = "SELECT
         Value
       FROM parametros
-      WHERE Id  = 'LAMDPOSLT_" . $IdSucursal . "_DOMICILIO'";
+      WHERE Id  = 'LAMDPOSLT_" . $IdCaja . "_ULTIMA_VERSION'";
   $result = $conlocal->query($queryM);
   if ($result->num_rows > 0) {
     // VER CON QUE RECIBIR DATA
