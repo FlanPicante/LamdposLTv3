@@ -2,6 +2,7 @@
 
 	if($_SERVER['REQUEST_METHOD']== 'GET'){
 		require_once("../db.php");
+		require_once("../Functions/functionsDb.php");
 		$idcaja= $_GET['caja'];
 		$idsucur= $_GET['sucur'];
 		if(obParamTmp($con, $idcaja)==1){
